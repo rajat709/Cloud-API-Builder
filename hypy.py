@@ -122,8 +122,8 @@ def main():
             """
     st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
 
-    username = "hypy-user"
-    pass_key = "HyPy@Cloud#007"
+    username = "..."
+    pass_key = "..."
 
     # Create a sidebar with a username, pass-key input fields, and a Login button
     st.sidebar.title("HyPy Cloud, Region-East")
