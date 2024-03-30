@@ -1,21 +1,25 @@
 #!/bin/bash
 
-# Get the list of running processes
-process_list=$(ps)
+# Get the PID and TIME columns from the ps aux output
+# and filter out the header line
+ps_aux_output=$(ps aux | awk '{print $2,$10}' | tail -n +2)
 
-# Loop through each process
+# Iterate over each line of ps aux output
 while read -r line; do
     pid=$(echo "$line" | awk '{print $1}')
-    elapsed_time=$(echo "$line" | awk '{print $3}')
+    time=$(echo "$line" | awk '{print $2}')
 
-    # Skip the header line of ps output
-    if [[ "$pid" == "PID" ]]; then
-        continue
-    fi
+    # Extract minutes and seconds from the TIME column
+    minutes=$(echo "$time" | cut -d':' -f1)
+    seconds=$(echo "$time" | cut -d':' -f2)
+
+    # Calculate total seconds
+    total_seconds=$((minutes * 60 + seconds))
 
     # Check if the process has exceeded the time limit (50 seconds)
-    if [ "$elapsed_time" -gt 50 ]; then
-        echo "Process with PID $pid has exceeded the time limit. Killing..."
+    if [ "$total_seconds" -gt 50 ]; then
+        # Kill the process
         kill -9 "$pid"
+        echo "Killed process with PID $pid (TIME: $time)"
     fi
-done <<< "$process_list"
+done <<< "$ps_aux_output"
