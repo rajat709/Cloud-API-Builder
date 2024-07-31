@@ -7,7 +7,6 @@ command_exists() {
 
 # Update package lists
 echo "Updating package lists..."
-sudo apt update
 sudo sed -i '/accept-nvidia-visible-devices-as-volume-mounts/c\accept-nvidia-visible-devices-as-volume-mounts = true' /etc/nvidia-container-runtime/config.toml
 
 echo "Follow up and create your minikube cluster ⚡"
