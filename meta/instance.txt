@@ -1,1 +1,15 @@
-x_gpu_1x_a100
+x_gpu_8x_h100_sxm5=4
+x_gpu_1x_h100_pcie=4
+x_gpu_8x_a100_80gb_sxm4=4
+x_gpu_1x_a10=2
+x_gpu_1x_rtx6000=2
+x_gpu_1x_a100=3
+x_gpu_1x_a100_sxm4=3
+x_gpu_2x_a100=3
+x_gpu_4x_a100=4
+x_gpu_8x_a100=4
+x_gpu_1x_a6000=3
+x_gpu_2x_a6000=4
+x_gpu_4x_a6000=4
+x_gpu_8x_a6000=4
+x_gpu_8x_v100=4
