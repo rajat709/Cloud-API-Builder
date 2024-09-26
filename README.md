@@ -1,1 +1,1 @@
-# test
+# Variables Extracting Endpoint
